@@ -25,16 +25,8 @@ jobs:
           channel: stable
           cache: true
 
-      - name: Create Android project files
-        run: flutter create --platforms=android --org com.gacnoba --project-name gacnoba_messenger .
-
-      - name: Patch Android manifest and SDK version
-        run: python3 tool/patch_android.py
-
-      - run: flutter pub get
-
-      - name: Build release APK
-        run: flutter build apk --release
+      - name: Build APK
+        run: bash tool/build.sh
 
       - uses: actions/upload-artifact@v4
         with:
