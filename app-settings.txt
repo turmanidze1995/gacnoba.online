@@ -1,0 +1,3 @@
+# Fill in the values after the equals sign, then commit the file to GitHub.
+ONESIGNAL_APP_ID=
+GOOGLE_WEB_CLIENT_ID=
