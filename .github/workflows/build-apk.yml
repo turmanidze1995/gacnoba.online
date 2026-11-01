@@ -34,7 +34,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "build-${{ github.run_number }}" \
-            build/app/outputs/flutter-apk/app-release.apk \
-            --title "Build ${{ github.run_number }}" \
-            --notes "APK"
+          N=${{ github.run_number }}
+          printf '{"version_code":%s,"version_name":"Build %s","apk_url":"https://github.com/%s/releases/download/build-%s/app-release.apk","notes":""}' "$N" "$N" "${{ github.repository }}" "$N" > gacnoba_update.json
+          gh release create "build-$N" build/app/outputs/flutter-apk/app-release.apk gacnoba_update.json --title "Build $N" --notes "APK"
